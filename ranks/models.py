@@ -10,8 +10,23 @@ class Ranking(models.Model):
 
 class Summoner(models.Model):
     summonerId = models.CharField(primary_key=True, max_length=50)
+    name = models.CharField(max_length=30)
+    win_rate = models.FloatField()
+    rank = [ 
+            'iron',
+            'bronze',
+            'silver',
+            'gold',
+            'platinum',
+            'diamond',
+            'master',
+            'grandmaster',
+            'challenger'
+        ]
+    ranking = models.CharField(max_length=15, choices=rank)
+    division = models.CharField(max_length=1)
+    league_points = models.IntegerField()
 
 class SummonerRanking(models.Model):
     ranking = models.ForeignKey(Ranking)
-    summonerId = models.ForeignKey(Summoner)
-    position = models.IntegerField('Position in the ranking table')
+    summonerId = models.ForeignKey(Summoner) 
