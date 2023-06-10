@@ -23,3 +23,25 @@ class SummonerByNameView(APIView):
         #if not serializer.data:
         #    pass
         return Response(serializer.data)
+
+class SummonerByIdView(APIView):
+    """
+    View the summoner specific information by its id 
+    """
+
+    def get(self, request, format=None):
+        """
+        Lists all the summoner information
+        """
+    def post(self, request, format=None):
+        """
+        Records this summoner to the database
+        """
+
+class RankingView(APIView):
+    """
+    Gets rankings and creates them
+    """
+
+class AddSummonerToRankingView(APIView):
+    pass
