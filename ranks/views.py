@@ -2,6 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import authentication, permissions
 from .models import Summoner, SummonerRanking, Ranking
+from .serializers import SummonerSerializer, SummonerRankingSerializer, RankingSerializer
 
 # Create your views here.
 
@@ -18,6 +19,7 @@ class SummonerByNameView(APIView):
         for summoner in Summoner.objects.all():
             if summoner.name.lower().find(request.name.lower()) >= 0:
                 summoners.append(summoner)
-        if not summoners:
-            return Response(summoners, 404)
-        return Response(summoners)
+        serializer = SummonerSerializer(summoners)
+        #if not serializer.data:
+        #    pass
+        return Response(serializer.data)
