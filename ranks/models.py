@@ -26,6 +26,7 @@ class Summoner(models.Model):
     ranking = models.CharField(max_length=15, choices=rank)
     division = models.CharField(max_length=1)
     league_points = models.IntegerField()
+    profile_icon = models.CharField(max_length = 10)
 
 class SummonerRanking(models.Model):
     ranking = models.ForeignKey(Ranking, on_delete=models.CASCADE)
